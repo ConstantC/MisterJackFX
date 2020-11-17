@@ -1,16 +1,12 @@
 package misterjack;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import misterjack.model.Quartier;
 import misterjack.view.GameBoardController;
-import java.util.concurrent.TimeUnit;
 
 
 public class MainApp extends Application {
@@ -19,7 +15,7 @@ public class MainApp extends Application {
     //GameEngine Game = new GameEngine();
 
     @Override
-    public void start(Stage primaryStage) throws InterruptedException {
+    public void start(Stage primaryStage){
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("MisterJack");
 
@@ -34,7 +30,7 @@ public class MainApp extends Application {
         try{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("view/GameBoard.fxml"));
-            AnchorPane GameBoard = (AnchorPane) loader.load();
+            AnchorPane GameBoard = loader.load();
 
             GameBoard.setStyle("-fx-background-color: #373737;");
 
@@ -63,9 +59,7 @@ public class MainApp extends Application {
         }
     }*/
 
-    public Stage getPrimaryStage() {
-        return primaryStage;
-    }
+    //public Stage getPrimaryStage() {return primaryStage;}
 
     public static void main(String[] args) {
         launch(args);

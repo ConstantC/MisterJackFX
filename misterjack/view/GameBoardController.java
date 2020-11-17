@@ -1,7 +1,5 @@
 package misterjack.view;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.*;
 import javafx.fxml.FXML;
 import javafx.geometry.*;
@@ -42,7 +40,7 @@ public class GameBoardController {
 
     private final TreeMap<String,Image> imagesQuartiers = new TreeMap<>();
     private final Image[] imagesDetectives = new Image[9];
-    private MainApp mainApp;
+    MainApp mainApp;
 
     GameEngine game = new GameEngine();
 
@@ -94,23 +92,20 @@ public class GameBoardController {
     private void loadImages() {
         String[] tpQuartiers = {"blackStreet", "blueStreet", "greenStreet", "greyStreet",
                 "magentaStreet", "orangeStreet", "pinkStreet", "whiteStreet", "yellowStreet"};
+
         Detective[] tpDetectives = game.getDetectives();
 
-        try{
+        String path;
 
         for(int i = 0; i<9; i++) {
-            Image tpImage = new Image(new FileInputStream("C:\\Users\\Const\\IdeaProjects\\MisterJackFX\\src\\ressources\\images\\Quartiers\\" + tpQuartiers[i] + ".png"));
-            imagesQuartiers.put(tpQuartiers[i], tpImage);
+            path  = "/ressources/images/Quartiers/" + tpQuartiers[i] + ".png";
+            imagesQuartiers.put(tpQuartiers[i], new Image(getClass().getResourceAsStream(path)));//asStream
         }
 
         for(int j = 0; j<3; j++){
-            Image tpImage = new Image(new FileInputStream("C:\\Users\\Const\\IdeaProjects\\MisterJackFX\\src\\ressources\\images\\Detectives\\" + tpDetectives[j].getName() + ".png"));
-            imagesDetectives[j] = tpImage;
+            path = "/ressources/images/Detectives/" + tpDetectives[j].getName() + ".png";
+            imagesDetectives[j] = new Image(getClass().getResourceAsStream(path));
         }
-        }catch (FileNotFoundException e){
-            e.printStackTrace();
-        }
-
     }
 
     private void loadDistrict(){
