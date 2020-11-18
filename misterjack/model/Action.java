@@ -1,7 +1,7 @@
 package misterjack.model;
 
 public class Action extends Jeton{
-    private boolean available;
+    private final boolean available;
 
     public boolean isAvailable(){
         return available;
