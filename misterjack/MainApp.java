@@ -40,6 +40,7 @@ public class MainApp extends Application {
             Scene scene = new Scene(GameBoard);
             primaryStage.setScene(scene);
             primaryStage.show();
+            //primaryStage.setFullScreen(true);
 
         }catch (IOException e) {
             e.printStackTrace();

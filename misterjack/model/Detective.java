@@ -1,7 +1,7 @@
 package misterjack.model;
 
 public class Detective {
-    private String name;
+    private final String name;
     private int position;
 
     public Detective(String tpName, int tpPosition){

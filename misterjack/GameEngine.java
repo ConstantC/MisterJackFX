@@ -1,29 +1,21 @@
 package misterjack;
 
 import misterjack.model.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
+
 
 public class GameEngine {
     Quartier[] district = new Quartier[9];
     Detective[] detectives = new Detective[3];
+    Action[] actions = new Action[4];
 
     public void initDistrict(){
         int[] angles = {0, 90, 180, 270};
         Random random = new Random();
         int choice = 0;
 
-        ArrayList<String> names = new ArrayList<>();
-        names.add("blackStreet");
-        names.add("blueStreet");
-        names.add("greenStreet");
-        names.add("greyStreet");
-        names.add("magentaStreet");
-        names.add("orangeStreet");
-        names.add("pinkStreet");
-        names.add("whiteStreet");
-        names.add("yellowStreet");
+        List<String> names = Arrays.asList("blackStreet","blueStreet","greenStreet","greyStreet","magentaStreet",
+                "orangeStreet","pinkStreet","whiteStreet","yellowStreet");
         Collections.shuffle(names);
 
         for(int i=0; i<9; i++){
@@ -52,6 +44,15 @@ public class GameEngine {
         }
     }
 
+    public void initActions(){
+        List<String> tpActions = Arrays.asList("","","","","","","","");
+        Collections.shuffle(tpActions);
+
+        for(int i = 0; i<4; i++){
+            actions[i] = new Action(tpActions.get(i),tpActions.get(4+i),-1,true);
+        }
+    }
+
     public void nextPosition(Detective tpDetective){
         int actualPosition = tpDetective.getPosition();
         if(actualPosition == 11){
@@ -64,7 +65,10 @@ public class GameEngine {
         return district;
     }
 
-    public Detective[] getDetectives() {
+    public Detective[] getDetectives(){
         return detectives;
+    }
+    public Action[] getActions(){
+        return actions;
     }
 }
